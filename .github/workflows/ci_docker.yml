@@ -1,0 +1,26 @@
+name: Using docker
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    name: ${{matrix.os}}
+    runs-on: ${{matrix.os}}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies 🐋
+        working-directory: ./
+        run: make npm-install
+
+      - name: Start all the environment 🐋
+        working-directory: ./
+        run: make start
+
+      - name: Run the tests 🐲
+        working-directory: ./
+        run: make test

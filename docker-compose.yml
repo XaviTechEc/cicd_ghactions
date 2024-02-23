@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  app: 
+    container_name: xtech_cicd-node
+    restart: unless-stopped
+    build: 
+      context: ./
+      target: ${STAGE}
+      dockerfile: Dockerfile
+    volumes:
+      - ./:/app:delegated
+      - /app/node_modules
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    env_file:
+      - .env
+    depends_on: 
+      - pg-db
+
+  pg-db: 
+    image: postgres:15.3
+    container_name: postgres-database
+    restart: always
+    ports:
+      - 5432:5432
+    environment: 
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    
+
+
