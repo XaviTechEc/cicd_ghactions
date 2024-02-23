@@ -4,13 +4,13 @@ on: [push, pull_request]
 
 jobs:
   build:
-    name: ${{matrix.os}}
+    name: ${{matrix.os}} ${{matrix.node}}
     runs-on: ${{matrix.os}}
     strategy:
       matrix:
         # os: [ubuntu-latest, windows-latest, macos-latest]
         os: [ubuntu-latest]
-        node: [16, 18]
+        node: [18, 20]
 
     steps:
       - uses: actions/checkout@v4
