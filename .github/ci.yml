@@ -9,5 +9,5 @@ jobs:
       - uses: actions/checkout@v1
       - name: Build app 🛠️
         run:
-          echo Building app from ${{github.workflow}} triggered by
-          ${{github.event_name}} done by ${{github.actor}}
+          echo "Building app from ${{github.workflow}} triggered by
+          ${{github.event_name}} done by ${{github.actor}}"
