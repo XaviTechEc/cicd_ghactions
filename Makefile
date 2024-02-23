@@ -3,8 +3,10 @@
 # Variables
 CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
 SHELL := ${shell which bash}
-DOCKER_COMPOSE := docker compose
+DOCKER_COMPOSE := docker-compose
 DOCKER_COMPOSE_FILE := docker-compose.yml
+
+default: build
 
 build: deps start
 
