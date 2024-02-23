@@ -18,3 +18,13 @@ jobs:
         run: |
           echo "Job Context: $JOB_CONTEXT"
           echo "Done!"
+
+      - name: Install dependencies 📄
+        working-directory: ./
+        run: |
+          npm install
+
+      - name: Run tests 🐲
+        working-directory: ./
+        run: |
+          npm test
