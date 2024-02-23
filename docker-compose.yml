@@ -9,12 +9,14 @@ services:
       target: ${STAGE}
       dockerfile: Dockerfile
     volumes:
-      - ./:/app:delegated
+      - ./:/app
       - /app/node_modules
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     env_file:
       - .env
+    environment: 
+      STAGE: ${STAGE}
     depends_on: 
       - pg-db
 
