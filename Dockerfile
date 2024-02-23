@@ -2,6 +2,7 @@ FROM node:18.17-alpine as dev
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install
+COPY ./ ./
 CMD ["npm", "start"]
  
 # Dev deps
