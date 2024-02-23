@@ -11,3 +11,10 @@ jobs:
         run:
           echo "Building app from ${{github.workflow}} triggered by
           ${{github.event_name}} done by ${{github.actor}}"
+
+      - name: More and more 😎
+        env:
+          JOB_CONTEXT: ${{toJson(job)}}
+        run: |
+          echo "Job Context: $JOB_CONTEXT"
+          echo "Done!"
