@@ -16,7 +16,7 @@ npm-install: CMD=install
 npm-update: CMD=update
 npm npm-install npm-update: 
 	@docker run --rm --interactive --volume $(CURRENT_DIR):/app --user $(id -u):$(id -g) \
-					node:18 npm $(CMD) --loglevel=warn
+					node:18 npm $(CMD) --loglevel=warn || (echo 'npm command failed, printing npm log:' && cat /root/.npm/_logs/*-debug.log)"
 
 test: 
 	docker exec xtech_cicd-node npm test
