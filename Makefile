@@ -13,7 +13,7 @@ deps: npm-install
 npm-install: CMD=install 
 npm-update: CMD=update
 npm npm-install npm-update: 
-	@docker run --rm --interactive --volume $(CURRENT_DIR):/app --user $(id -u):$(id -g) \
+	@docker run --rm --interactive --volume $(CURRENT_DIR):/app \
 					node npm $(CMD) --loglevel=warn
 
 test: 
