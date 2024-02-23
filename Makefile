@@ -13,8 +13,8 @@ deps: npm-install
 npm-install: CMD=install 
 npm-update: CMD=update
 npm npm-install npm-update: 
-	@docker run --rm --interactive --volume $(CURRENT_DIR):/app \
-		node:18 sh -c "npm install -g npm@latest && npm cache clean --force && npm $(CMD) --loglevel=warn"
+	@docker run --rm --interactive --volume $(CURRENT_DIR):/app --user $(id -u):$(id -g) \
+					node:18 npm $(CMD) --loglevel=warn
 
 test: 
 	docker exec xtech_cicd-node npm test
