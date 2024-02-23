@@ -13,6 +13,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Clear npm cache 🧹
+        run:
+          docker run --rm --interactive --volume $(pwd):/app --user $(id
+          -u):$(id -g) node:14 npm cache clean --force
+
       - name: Install dependencies 🐋
         working-directory: ./
         run: make npm-install
