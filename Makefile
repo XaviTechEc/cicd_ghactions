@@ -2,7 +2,6 @@
 
 # Variables
 # CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
-CURRENT_DIR := $(pwd)
 SHELL := ${shell which bash}
 
 default: build
@@ -10,10 +9,10 @@ default: build
 build: deps start
 
 deps:
-	docker run --rm --interactive --volume $(CURRENT_DIR):/app node npm install
+	docker run --rm --interactive --volume $(pwd):/app node npm install
 
 compile: 
-	docker run --rm --interactive --volume $(CURRENT_DIR):/app node npm run build
+	docker run --rm --interactive --volume $(pwd):/app node npm run build
 
 test: 
 	@docker exec xtech_cicd-node make run-tests
