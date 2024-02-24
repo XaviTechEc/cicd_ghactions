@@ -1,30 +1,31 @@
-FROM node:18.17-alpine as dev
+FROM node:16-alpine as dev
 WORKDIR /app
-COPY . .
-EXPOSE 8080
+COPY package.json package-lock.json ./
+RUN npm install
+COPY ./ ./
 CMD ["npm", "start"]
  
 # # Dev deps
-# FROM node:18.17-alpine as dev-deps
+# FROM node:16-alpine as dev-deps
 # WORKDIR /app
 # COPY package.json package-lock.json ./
 # RUN npm install --frozen-lockfile
 
 # # Builder 
-# FROM node:18.17-alpine as builder
+# FROM node:16-alpine as builder
 # WORKDIR /app
 # COPY --from=dev-deps /app/node_modules ./node_modules
 # COPY ./ ./
 # RUN npm run build
 
 # # Prod deps 
-# FROM node:18.17-alpine as prod-deps
+# FROM node:16-alpine as prod-deps
 # WORKDIR /app
 # COPY package.json package-lock.json ./
 # RUN npm install --prod --frozen-lockfile
 
 # # Prod stage
-# FROM node:18.17-alpine as prod
+# FROM node:16-alpine as prod
 # WORKDIR /app
 # COPY --from=prod-deps /app/node_modules ./node_modules
 # COPY --from=builder /app/dist ./dist
