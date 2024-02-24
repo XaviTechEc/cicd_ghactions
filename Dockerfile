@@ -1,7 +1,7 @@
 FROM node:18.17-alpine as dev
 WORKDIR /app
-COPY ./ /app
-RUN npm install
+COPY . .
+EXPOSE 8080
 CMD ["npm", "start"]
  
 # # Dev deps

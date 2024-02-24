@@ -1,23 +1,25 @@
-.PHONY: build deps npm-install npm-update npm reload test run-tests start stop destroy doco rebuild start-local
+.PHONY: build deps compile test run-tests rebuild doco start stop destroy
 
 # Variables
-CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+# CURRENT_DIR := $(dir $(abspath $(lastword $(MAKEFILE_LIST))))
+CURRENT_DIR := $(pwd)
 SHELL := ${shell which bash}
 
 default: build
 
 build: deps start
 
-deps: npm-install 
+deps:
+	docker run --rm --interactive --volume $(CURRENT_DIR):/app node npm install
 
-npm-install: CMD=install 
-npm-update: CMD=update
-npm npm-install npm-update: 
-	@docker run --rm --interactive --volume $(CURRENT_DIR):/app \
-					node npm $(CMD) --loglevel=warn
+compile: 
+	docker run --rm --interactive --volume $(CURRENT_DIR):/app node npm run build
 
 test: 
-	docker exec xtech_cicd-node npm test
+	@docker exec xtech_cicd-node make run-tests
+
+run-tests: 
+	npm test
 
 start: CMD=up -d  
 stop: CMD=stop

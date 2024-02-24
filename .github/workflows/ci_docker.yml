@@ -15,7 +15,7 @@ jobs:
 
       - name: Install dependencies 🐋
         working-directory: ./
-        run: make npm-install
+        run: make deps
 
       - name: Start all the environment 🐋
         working-directory: ./

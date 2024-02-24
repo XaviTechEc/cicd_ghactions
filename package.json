@@ -5,7 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon",
-		"build": "rimraf ./dist && tsc",
+		"build": "npm run build:clean && npm run build:tsc",
+		"build:clean": "rimraf ./dist",
+		"build:ts": "tsx -p tsconfig.json",
 		"start": "npm run build && node dist/app.js",
 		"test": "npm run test:unit && npm run test:features",
 		"test:watch": "jest --watch",
