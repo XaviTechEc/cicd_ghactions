@@ -20,8 +20,6 @@ run-tests:
 	npm test
 
 start: CMD=up -d  
-	docker-compose up xtech_cicd-node
-	
 stop: CMD=stop
 destroy: CMD=down 
 
