@@ -6,8 +6,12 @@ jobs:
   autolabel:
     runs-on: ubuntu-latest
     name: Label the pull request
+
     steps:
+      - name: Greeting
+        run: echo "Hello"
+
       - name: Pull request size labeler
-        uses: xavitechec/gh-action-pr-size-labeler@v1
+        uses: xavitechec/gh-action-pr-size-labeler@v1.0.7
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
