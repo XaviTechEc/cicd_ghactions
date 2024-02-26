@@ -8,7 +8,10 @@ jobs:
     name: Label the pull request
 
     steps:
+      - name: Greeting
+        run: echo "Hello"
+
       - name: Pull request size labeler
-        uses: xavitechec/gh-action-pr-size-labeler@v1.0.2
+        uses: xavitechec/gh-action-pr-size-labeler@v1.0.3
         with:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
