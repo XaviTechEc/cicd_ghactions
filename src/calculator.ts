@@ -6,8 +6,4 @@ export class Calculator {
 	subtract(num1: number, num2: number): number {
 		return num1 - num2;
 	}
-
-	addByFive(num1: number): number {
-		return num1 + 5;
-	}
 }
