@@ -8,7 +8,6 @@ default: build
 build: deps start
 
 deps:
-	rm -rf node_modules package-lock.json
 	docker run --rm --interactive --volume $(PWD):/app node npm install
 
 compile: 
