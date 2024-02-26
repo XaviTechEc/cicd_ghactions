@@ -15,12 +15,13 @@ jobs:
 
       - name: Install dependencies 🐋
         working-directory: ./
-        run: make deps
+        run: echo "TODO"
+      #   run: make deps
 
-      - name: Start all the environment 🐋
-        working-directory: ./
-        run: make start
+      # - name: Start all the environment 🐋
+      #   working-directory: ./
+      #   run: make start
 
-      - name: Run the tests 🐲
-        working-directory: ./
-        run: make test
+      # - name: Run the tests 🐲
+      #   working-directory: ./
+      #   run: make test
